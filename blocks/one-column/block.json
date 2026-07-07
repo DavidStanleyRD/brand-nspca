@@ -1,0 +1,19 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "acf/one-column",
+    "title": "One Column",
+    "description": "Single column layout section",
+    "category": "theme",
+    "icon": "align-center",
+    "keywords": ["column", "layout", "section"],
+    "acf": {
+        "mode": "auto",
+        "renderTemplate": "blocks/one-column/one-column.php"
+    },
+    "supports": {
+        "anchor": true,
+        "align": false,
+        "alignWide": false
+    }
+}

@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;500&display=swap');
+
+body.login {
+	background: #f8f8f9;
+	display: flex;
+/*	flex-wrap: wrap;*/
+	flex-direction: column;
+	font-family: 'IBM Plex Sans', sans-serif;
+	font-weight: 300;
+}
+
+.login .message, .login .notice, .login .success {
+	border-left: 0px;
+	border-radius: 3px;
+}
+.login form {
+	background: transparent;
+	border-radius: 20px;
+	border: 0px;
+	padding: 2rem 4rem;
+	color: black;
+}
+.login form p input[type="submit"] {
+	background-color: #E03422;
+	border-radius: 30px;
+	border: 0px;
+	padding: 2px 30px !important;
+	font-size: 16px;
+	font-weight: 500;
+	transition: all 0.3s ease;
+}
+.login form p input[type="submit"]:hover {
+	background-color: #ED6E54;
+}
+.login h1 {
+	width: 100%;
+}
+.login h1 a {
+	background-size: contain;
+	width: 50%;
+	height: 150px;
+	background-position: center;
+
+}
+.login #nav a{
+	color: black;
+}
+.login #backtoblog a {
+	color: black;
+}
+#login {
+
+	padding: 0 1rem;
+	width: calc(100vw - 2rem);
+	height: 100%;
+}
+
+.user-pass-wrap {
+	margin-bottom: 32px;
+}
+.language-switcher  {
+	display: none;
+}
+.image-wrap {
+	width: 100%;
+	height: 20%;
+}
+.image-wrap img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+@media (min-width: 768px) {
+	.image-wrap {
+		width: 70%;
+		height: 100vh;
+	}
+	#login {
+		width: 30%;
+		height: calc(100vh - 4rem);
+		padding: 2rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+	}
+	.login h1 a {
+		width: 60%;
+	}
+	body.login {
+		flex-direction: row;
+		flex-wrap: nowrap;
+	}
+
+}

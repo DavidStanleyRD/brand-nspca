@@ -1,0 +1,41 @@
+.photography-themes {
+	margin-top: 64px;
+	.photography-themes-single {
+		display: flex;
+		gap: 1vw;
+		margin-bottom: 20px;
+		flex-direction: column-reverse;
+		@media(min-width: $md-breakpoint) {
+			flex-direction: row;
+		}
+		&:nth-of-type(even) {
+			@media(min-width: $md-breakpoint) {
+				flex-direction: row-reverse;
+			}
+		}
+		.photography-themes-panel {
+			padding: 20px;
+			flex-basis: 100%;
+			border-radius: 16px;
+			@media(min-width: $md-breakpoint) {
+				flex-basis: calc(20% - 1vw);
+			}
+		}
+		.photography-themes-image {
+			flex-basis: 100%;
+			overflow: hidden;
+			position: relative;
+			border-radius: 16px;
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				// border-radius: 25px;
+				
+			}
+			@media(min-width: $md-breakpoint) {
+				flex-basis: calc(80% - 1vw);
+			}
+		}
+	}
+}

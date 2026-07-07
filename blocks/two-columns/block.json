@@ -1,0 +1,19 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "acf/two-columns",
+    "title": "Two Columns",
+    "description": "Two column layout section",
+    "category": "theme",
+    "icon": "columns",
+    "keywords": ["columns", "layout", "section", "two"],
+    "acf": {
+        "mode": "auto",
+        "renderTemplate": "blocks/two-columns/two-columns.php"
+    },
+    "supports": {
+        "anchor": true,
+        "align": false,
+        "alignWide": false
+    }
+}

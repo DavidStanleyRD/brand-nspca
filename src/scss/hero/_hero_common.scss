@@ -1,0 +1,39 @@
+.hero-banner{
+	
+	position:relative;
+	@media(min-width: $md-breakpoint){
+		height: 100vh;
+	}
+
+	video {
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		z-index: 1;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+	
+}
+
+#hero {
+	// padding-top: 25svh;
+	@media(max-width: $sm-breakpoint) {
+		padding-top: 25svh;
+	}
+	@media(max-width: $md-breakpoint) {
+		padding-top: 50svh;
+	}
+
+}
+
+#hero-bottom {
+	@media(max-width: $md-breakpoint) {
+		padding-bottom: 25svh;
+	}
+}
+
+#hero, #hero-bottom {
+	
+}

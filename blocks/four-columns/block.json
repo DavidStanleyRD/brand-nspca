@@ -1,0 +1,19 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "acf/four-columns",
+    "title": "Four Columns",
+    "description": "Four column layout section",
+    "category": "theme",
+    "icon": "columns",
+    "keywords": ["columns", "layout", "section", "four"],
+    "acf": {
+        "mode": "auto",
+        "renderTemplate": "blocks/four-columns/four-columns.php"
+    },
+    "supports": {
+        "anchor": true,
+        "align": false,
+        "alignWide": false
+    }
+}

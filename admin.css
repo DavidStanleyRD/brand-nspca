@@ -1,0 +1,245 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;500&display=swap');
+
+.highlight {
+    position: relative;
+  display: inline-block;
+
+  text-decoration: underline;
+  text-decoration-style: solid;
+  text-decoration-line: underline;
+  text-decoration-color: #D3F83A;
+  text-decoration-thickness: 20px; 
+  text-underline-offset: -10px;
+  text-decoration-skip-ink: none;
+}
+@media(min-width: 768px) {
+    .interface-interface-skeleton__sidebar {
+        width: 40%;
+    }
+    .interface-complementary-area__fill, .interface-complementary-area {
+        width: 100% !important;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+    html :where(.wp-block) {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+}
+
+.dashboard-page {
+    width: 100%;
+    text-align: left;
+    padding-left: 4rem;
+}
+@media(min-width: 768px) {
+    .dashboard-page {
+        width: calc(100% - 160px);
+    }
+}
+
+@media(min-width: 1440px) {
+    .dashboard-page {
+        width: calc(100% - 40rem);
+    }
+}
+.dashboard-page h2 {
+    font-size: 100px;
+    line-height: 1;
+}
+.dashboard-page p {
+    font-size: 36px;
+    line-height: 1.3;
+}
+.notice {
+    background: #ed6e54;
+    color: black;
+    border-left: 0px;
+    border-radius: 4px;
+    box-shadow: none !important;
+    border: 1px solid black;
+}
+.notice, div.error, div.updated {
+    box-shadow: none !important;
+}
+.notice a {
+    color: black;
+}
+
+form.posts-filter p, a {
+    color :black;
+}
+.wp-list-table th,td{
+    border-bottom: 1px solid black;
+}
+.alternate, .striped>tbody>:nth-child(odd), ul.striped>:nth-child(odd) {
+    background-color: white;
+
+}
+.wp-list-table {
+    border: 1px solid black !important;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.wp-list-table th {
+    border-bottom: 1px solid black;
+    background-color: #FFF7F0;
+}
+.wp-list-table th.check-column {
+    background-color: #ffffff;
+}
+#titlewrap input {
+    border: 1px solid black;
+    border-radius: 10px;
+}
+.manage-column {
+    background: #FFF7F0;
+}
+.wp-admin {
+    background: #FFF7F0;
+    color: black;
+}
+#wpcontent {
+/*    background: #FFEDDF;*/
+}
+#adminmenuback {
+    background: black;
+}
+#adminmenuwrap {
+    background: black;
+}
+#adminmenu {
+    background: black;
+}
+.separator {
+    background: #ffffff;
+    margin: 20px 0px;
+}
+.postbox  {
+    color: black;
+    border: 0px;
+    border-radius: 4px;
+
+}
+.postbox-header {
+    border-bottom: 1px solid black;
+}
+/*.ab-icon:before {
+    display: none;
+}
+.ab-icon {
+    display: none;
+}*/
+#wpfooter {
+    background: #FFEDDF;
+}
+#footer-left {
+    display: flex;
+    align-items: center;
+    color: black;
+}
+#footer-left svg {
+    width: 40px;
+    height: auto;
+    margin-right: 10px;
+}
+#wp-admin-bar-wp-logo {
+    display: none;
+}
+
+body.wp-admin {
+    font-family: 'IBM Plex Sans';
+    font-weight: 300;
+}
+#adminmenu .wp-submenu-head, #adminmenu a.menu-top {
+    font-weight: 300;
+/*    text-transform: uppercase;*/
+/*    letter-spacing: 0.5px;*/
+}
+#adminmenu a {
+    color: white;
+}
+#adminmenu .wp-submenu {
+    background-color: #111;
+}
+#wpadminbar {
+    background-color: #111;
+}
+#adminmenu div.wp-menu-name:hover {
+    background-color: #222;
+}
+.acf-postbox {
+    border: 1px solid black;
+    border-radius: 10px;
+}
+.post-php .postbox-container {
+    border: 1px solid black;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #fff;
+}
+.wp-admin input[type="submit"] {
+    background-color: #E03422;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    border: 0px;
+    color: white;
+}
+.wp-admin input[type="submit"]:hover {
+    background-color: #ed6e54;
+}
+.wp-admin a.button.preview {
+    background-color: #FFF7F0;
+    border: 1px solid black;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    color: black;
+/*    border: 0px;*/
+}
+.wp-admin a.button.preview:hover {
+    background-color: #ed6e54;
+    color: white;
+}
+.acfe-flexible-stylised-button {
+    border: 1px dashed #555 !important;
+}
+.acf-flexible-content .layout .acf-fc-layout-handle {
+    /*background-color: #111;*/
+}
+.acf-flexible-content .layout .acf-fc-layout-handle span.acfe-layout-title-text {
+    color: white;
+    font-weight: 300;
+}
+.acf-flexible-content .layout .acf-fc-layout-handle input {
+    color: white;
+}
+.acf-flexible-content .layout .acf-fc-layout-handle input:hover {
+    background-color: #E03422;
+}
+
+.acfe-layout-title-text:hover {
+    background: #E03422;
+}
+
+.wp-menu-image:before {
+font-family: "dashicons";
+color: white !important;
+}
+#adminmenu .wp-has-current-submenu .wp-submenu .wp-submenu-head, #adminmenu .wp-menu-arrow, #adminmenu .wp-menu-arrow div, #adminmenu li.current a.menu-top, #adminmenu li.wp-has-current-submenu a.wp-has-current-submenu{
+    border-radius: 3px;
+    background-color: white;
+    color: black;
+    margin: 0 5px;
+}
+#adminmenu .wp-has-current-submenu .wp-submenu .wp-submenu-head, #adminmenu .wp-menu-arrow, #adminmenu .wp-menu-arrow div, #adminmenu li.current a.menu-top, #adminmenu li.wp-has-current-submenu a.wp-has-current-submenu .wp-menu-image:before {
+ color: black !important;
+}
+#adminmenu .wp-first-item.wp-not-current-submenu .wp-menu-image:before {
+    color: white;
+}
+#adminmenu .wp-first-item.current .wp-menu-image:before {
+    color: black !important;
+}
+body.js.block-editor-page ul#adminmenu a.wp-has-current-submenu:after, body.js.block-editor-page ul#adminmenu>li.current>a.current:after {
+    display: none;
+}

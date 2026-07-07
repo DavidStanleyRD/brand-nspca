@@ -1,0 +1,51 @@
+.highlight {
+	position: relative;
+  display: inline-block;
+
+  text-decoration: underline;
+  text-decoration-style: solid;
+  text-decoration-line: underline;
+  text-decoration-color: #D3F83A;
+  text-decoration-thickness: 20px; 
+  text-underline-offset: -10px;
+  text-decoration-skip-ink: none;
+}
+
+.large-intro {
+	font-size: 32px;
+	font-family: 'MarrSansCondensed-Semibold-Web', sans-serif;
+	font-weight: normal;
+}
+
+.intro {
+	font-size: 20px;
+	font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.notice {
+	font-size: 16px;
+	font-weight: 700;
+}
+
+.align-left {
+	text-align: left;
+}
+
+.align-center {
+	text-align: center;
+}
+
+.align-right {
+	text-align: right;
+}
+
+.align-justify {
+	text-align: justify;
+}
+
+p {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+h1,h2,h3,h4,h5 {
+  font-family: 'MarrSansCondensed-Semibold-Web', sans-serif;
+}

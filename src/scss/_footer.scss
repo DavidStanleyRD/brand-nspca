@@ -1,0 +1,32 @@
+footer {
+	ul {
+		list-style: none;
+		padding-left: 0px;
+		margin-left: 0px;
+		li {
+			padding-left: 0px;
+			margin-left: 0px;
+		}
+	}
+	.footer-logo {
+		margin-top: 64px;
+		display: block;
+		@media(min-width: $md-breakpoint) {
+			margin-top: 0px;
+		}
+	}
+}
+
+.lower-footer {
+	.lower-footer-inner {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		font-size: 14px;
+		a {
+			&:hover {
+				color: #ccc;
+			}
+		}
+	}
+}

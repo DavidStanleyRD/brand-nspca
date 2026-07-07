@@ -1,0 +1,19 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "acf/colour-palette",
+    "title": "Colour Palette",
+    "description": "Brand colour palette section",
+    "category": "theme",
+    "icon": "art",
+    "keywords": ["colour", "palette", "colors"],
+    "acf": {
+        "mode": "auto",
+        "renderTemplate": "blocks/colour-palette/colour-palette.php"
+    },
+    "supports": {
+        "anchor": false,
+        "align": false,
+        "alignWide": false
+    }
+}

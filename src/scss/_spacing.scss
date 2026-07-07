@@ -1,0 +1,114 @@
+//Spacing
+
+
+
+//padding top
+
+.pt-none {
+	padding-top: 0px;
+}
+.pt-small {
+	@media(max-width: $xs-breakpoint) {
+		padding-top: 16px;
+	}
+	padding-top: clamp(38px, calc(2.375rem + ((1vw - 4.8px) * 3.5417)), 72px); 
+}
+.pt-medium {
+	@media(max-width: $xs-breakpoint) {
+		padding-top: 32px;
+	}
+	padding-top: clamp(72px, calc(4.5rem + ((1vw - 4.8px) * 7.5)), 144px);
+}
+.pt-large {
+	@media(max-width: $xs-breakpoint) {
+		padding-top: 140px;
+	}
+	padding-top: clamp(144px, calc(9rem + ((1vw - 4.8px) * 10)), 288px);
+
+}
+.pt-xlarge {
+	@media(max-width: $xs-breakpoint) {
+		padding-top: 72px;
+	}
+	padding-top: clamp(288px, calc(18rem + ((1vw - 4.8px) * 10)), 432px);
+	
+}
+.pt-xxlarge {
+	padding-top: clamp(432px, calc(27rem + ((1vw - 4.8px) * 10)), 576px);
+}
+
+//padding bottom
+
+.pb-none {
+	padding-bottom: 0px;
+}
+.pb-small {
+	@media(max-width: $xs-breakpoint) {
+		padding-bottom: 16px;
+	}
+	padding-bottom: clamp(38px, calc(2.375rem + ((1vw - 4.8px) * 3.5417)), 72px); 
+}
+.pb-medium {
+	@media(max-width: $xs-breakpoint) {
+		padding-bottom: 32px;
+	}
+	padding-bottom: clamp(72px, calc(4.5rem + ((1vw - 4.8px) * 7.5)), 144px);
+}
+.pb-large {
+	@media(max-width: $xs-breakpoint) {
+		padding-bottom: 72px;
+	}
+	padding-bottom: clamp(144px, calc(9rem + ((1vw - 4.8px) * 10)), 288px);
+}
+.pb-xlarge {
+	@media(max-width: $xs-breakpoint) {
+		padding-bottom: 72px;
+	}
+	padding-bottom: clamp(288px, calc(18rem + ((1vw - 4.8px) * 10)), 432px);
+}
+.pb-xxlarge {
+	padding-bottom: clamp(432px, calc(27rem + ((1vw - 4.8px) * 10)), 576px);
+}
+
+
+//padding left
+
+.pl-none {
+	padding-left: 0px;
+}
+.pl-small {
+	padding-left: clamp(38px, calc(2.375rem + ((1vw - 4.8px) * 3.5417)), 72px); 
+}
+.pl-medium {
+	padding-left: clamp(72px, calc(4.5rem + ((1vw - 4.8px) * 7.5)), 144px);
+}
+.pl-large {
+	padding-left: clamp(144px, calc(9rem + ((1vw - 4.8px) * 10)), 288px);
+}
+.pl-xlarge {
+	padding-left: clamp(288px, calc(18rem + ((1vw - 4.8px) * 10)), 432px);
+}
+.pl-xxlarge {
+	padding-left: clamp(432px, calc(27rem + ((1vw - 4.8px) * 10)), 576px);
+}
+
+//padding right
+
+.pr-none {
+	padding-right: 0px;
+}
+.pr-small {
+	padding-right: clamp(38px, calc(2.375rem + ((1vw - 4.8px) * 3.5417)), 72px); 
+}
+.pr-medium {
+	padding-right: clamp(72px, calc(4.5rem + ((1vw - 4.8px) * 7.5)), 144px);
+}
+.pr-large {
+	padding-right: clamp(144px, calc(9rem + ((1vw - 4.8px) * 10)), 288px);
+}
+.pr-xlarge {
+	padding-right: clamp(288px, calc(18rem + ((1vw - 4.8px) * 10)), 432px);
+}
+.pr-xxlarge {
+	padding-right: clamp(432px, calc(27rem + ((1vw - 4.8px) * 10)), 576px);
+}

@@ -1,0 +1,65 @@
+.media-card {
+	&__link {
+		display: block;
+	}
+	&__media {
+		display: flex;
+		overflow: hidden;
+		img {
+			transition: all 0.4s ease;
+			width: 100%;
+		}
+	}
+	&__text {
+		padding: 1rem 2rem;
+		a {
+			text-decoration: none;
+		}
+	}
+	&:hover {
+		.media-card__media {
+			img {
+				transform: scale(1.05);
+			}
+		}
+		a {
+			text-decoration: none;
+		}
+	}
+}
+
+.general-card {
+	display: flex;
+	flex-direction: column;
+	gap: 0rem;
+	height: fill-available;
+	&__image {
+		display: flex;
+		overflow: hidden;
+		img {
+			transition: all 0.4s ease;
+			width: 100%;
+		}
+	}
+	&__text {
+		// flex-grow: 1;
+		// height: fill-available;
+	}
+}
+.usage-card {
+
+	&__media {
+		display: flex;
+		overflow: hidden;
+		img {
+			// transition: all 0.4s ease;
+		}
+	}
+	&__text {
+		padding: 1rem 0rem;
+	}
+	&__icon {
+		max-width: 32px;
+		margin: 1rem auto 0;
+	}
+}

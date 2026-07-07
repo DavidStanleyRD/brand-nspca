@@ -1,0 +1,19 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "acf/three-columns",
+    "title": "Three Columns",
+    "description": "Three column layout section",
+    "category": "theme",
+    "icon": "columns",
+    "keywords": ["columns", "layout", "section", "three"],
+    "acf": {
+        "mode": "auto",
+        "renderTemplate": "blocks/three-columns/three-columns.php"
+    },
+    "supports": {
+        "anchor": true,
+        "align": false,
+        "alignWide": false
+    }
+}

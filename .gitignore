@@ -1,0 +1,12 @@
+/node_modules
+/vendor
+/package-lock.json
+# /package.json
+/yarn.lock
+/yarn-error.log
+/yarn-debug.log
+/yarn-debug.log.json
+/yarn-debug.log.json.gz
+/yarn-debug.log.json.gz.json
+/yarn-debug.log.json.gz.json.gz
+/yarn-debug.log.json.gz.json.gz.json

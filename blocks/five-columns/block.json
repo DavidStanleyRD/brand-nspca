@@ -1,0 +1,19 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "acf/five-columns",
+    "title": "Five Columns",
+    "description": "Five column layout section",
+    "category": "theme",
+    "icon": "columns",
+    "keywords": ["columns", "layout", "section", "five"],
+    "acf": {
+        "mode": "auto",
+        "renderTemplate": "blocks/five-columns/five-columns.php"
+    },
+    "supports": {
+        "anchor": true,
+        "align": false,
+        "alignWide": false
+    }
+}

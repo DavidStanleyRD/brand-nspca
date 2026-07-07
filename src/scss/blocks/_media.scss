@@ -1,0 +1,26 @@
+.media-block {
+	overflow: hidden;
+	display: flex;
+	width: fit-content;
+	img, video {
+		max-width: 100%;
+		height: auto;
+	}
+	@media(max-width: $xs-breakpoint) {
+		margin-bottom: 2rem;
+		&:last-of-type {
+			// margin-bottom: 0;
+		}
+	}
+}
+@media(max-width: $xs-breakpoint) {
+.two-columns {
+	.col-xs-12 {
+		&:last-of-type {
+			.media-block {
+				margin-bottom: 0;
+			}
+		}
+	}
+}
+}
