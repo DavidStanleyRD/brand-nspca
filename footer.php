@@ -29,6 +29,7 @@
 		<div class="row">
 			<div class="col-xs-6 col-sm-3">
 				<?php if($footer_tagline):?>
+					
 					<h3><b><?php echo $footer_tagline;?></b></h3>
 				<?php endif;?>
 				<?php if($website_link):?>
