@@ -20,7 +20,7 @@ header{
 		--logo-width: 260px;
 	}
 	@media(min-width: $xxl-breakpoint) {
-		--logo-width: 320px;
+		// --logo-width: 280px;
 	}
 	&.scrolled {
 		--logo-width: 180px;
@@ -31,7 +31,7 @@ header{
 			--logo-width: 200px;
 		}
 		@media(min-width: $xxl-breakpoint) {
-			--logo-width: 240px;
+			// --logo-width: 220px;
 		}
 	}
 }
@@ -142,6 +142,12 @@ header nav.desktop-nav {
 			padding-left: 1.1vw;
 			padding-right: 1.1vw;
 			align-items: center;
+			margin-bottom: 0;
+			&.current_page_item {
+				a {
+					border-bottom: 2px solid currentColor;
+				}
+			}
 
 			a{
 				display: block;

@@ -2323,11 +2323,6 @@ header {
     --logo-width: 260px;
   }
 }
-@media (min-width: 106rem) {
-  header {
-    --logo-width: 320px;
-  }
-}
 header.scrolled {
   --logo-width: 180px;
 }
@@ -2341,12 +2336,6 @@ header.scrolled {
     --logo-width: 200px;
   }
 }
-@media (min-width: 106rem) {
-  header.scrolled {
-    --logo-width: 240px;
-  }
-}
-
 header.out-of-view {
   transform: translateY(-500px);
   transition: transform 0.5s ease-out;
@@ -2459,6 +2448,10 @@ header nav.desktop-nav ul li {
   padding-left: 1.1vw;
   padding-right: 1.1vw;
   align-items: center;
+  margin-bottom: 0;
+}
+header nav.desktop-nav ul li.current_page_item a {
+  border-bottom: 2px solid currentColor;
 }
 header nav.desktop-nav ul li a {
   display: block;
@@ -2969,9 +2962,7 @@ header nav > ul > li > a:focus {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  height: -webkit-fill-available;
-  height: -moz-available;
-  height: fill-available;
+  height: 100%;
 }
 .general-card__text {
   padding: 1rem;
@@ -2989,6 +2980,16 @@ header nav > ul > li > a:focus {
 @media (min-width: 87.5rem) {
   .five-columns {
     grid-template-columns: repeat(5, 1fr);
+  }
+}
+.five-columns .col-xs-12 {
+  height: -webkit-fill-available;
+  height: -moz-available;
+  height: fill-available;
+}
+@media (max-width: 1200px) {
+  .five-columns .col-xs-12 {
+    margin-bottom: 2rem;
   }
 }
 
@@ -3376,23 +3377,39 @@ header nav > ul > li > a:focus {
 .media-card:hover a {
   text-decoration: none;
 }
+.media-card:hover .media-card__text h2, .media-card:hover .media-card__text h3, .media-card:hover .media-card__text .accordion .accordion-toggle__inner .accordion-toggle__title, .accordion .accordion-toggle__inner .media-card:hover .media-card__text .accordion-toggle__title, .media-card:hover .media-card__text h4, .media-card:hover .media-card__text h5, .media-card:hover .media-card__text h6, .media-card:hover .media-card__text p {
+  font-weight: bold;
+}
 
 .general-card {
   display: flex;
   flex-direction: column;
-  gap: 0rem;
-  height: -webkit-fill-available;
-  height: -moz-available;
-  height: fill-available;
+  height: 100%;
+  min-height: 0;
 }
 .general-card__image {
+  flex: 0 0 auto;
   display: flex;
   overflow: hidden;
 }
 .general-card__image img {
   transition: all 0.4s ease;
   width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
+.general-card__text {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 0;
+}
+.general-card__text p {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
 .usage-card__media {
   display: flex;
   overflow: hidden;
