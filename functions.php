@@ -243,10 +243,12 @@ add_filter( 'tiny_mce_before_init', 'my_theme_add_editor_fonts_to_tinymce' );
 
 /** Admin Styles **/
 
-function theme_admin_styles() { 
-    wp_enqueue_style('theme_main_admin_style', get_theme_file_uri('admin.css')); 
+function theme_admin_styles() {
+	$admin_css = get_theme_file_path( 'admin.css' );
+	$version   = file_exists( $admin_css ) ? (string) filemtime( $admin_css ) : null;
+	wp_enqueue_style( 'theme_main_admin_style', get_theme_file_uri( 'admin.css' ), array(), $version );
 }
-add_action('admin_enqueue_scripts', 'theme_admin_styles');
+add_action( 'admin_enqueue_scripts', 'theme_admin_styles' );
 
 
 add_filter( 'relevanssi_live_search_base_styles', '__return_false' );
@@ -634,7 +636,7 @@ add_filter('login_redirect', 'redirect_after_login', 10, 3);
 
 function sdt_remove_ver_css_js( $src, $handle ) 
 {
-  $handles_with_version = [ 'style' ]; // <-- Adjust to your needs!
+  $handles_with_version = [ 'style', 'theme_main_admin_style' ]; // <-- Adjust to your needs!
   if ( strpos( $src, 'ver=' ) && ! in_array( $handle, $handles_with_version, true ) )
       $src = remove_query_arg( 'ver', $src );
   return $src;
@@ -1088,6 +1090,7 @@ add_action( 'after_setup_theme', function() {
 	add_theme_support( 'editor-styles' );
 	add_editor_style( 'assets/css/normalize.css' );
 	add_editor_style( 'dist/css/main.css' );
+	add_editor_style( 'admin.css' );
 } );
 
 
