@@ -14,7 +14,8 @@
 }
 @media(min-width: 768px) {
     .interface-interface-skeleton__sidebar {
-        width: 40%;
+        /* width: 40%; */
+        width: auto;
     }
     .interface-complementary-area__fill, .interface-complementary-area {
         width: 100% !important;
