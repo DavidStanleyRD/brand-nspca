@@ -266,8 +266,10 @@
 						'menu' => 'Main Menu', 
 						'container' => '', 
 						'items_wrap' => '<ul>%3$s</ul>',
-						'walker' => new Custom_Nav_Walker()
 					);
+					if ( class_exists( 'Custom_Nav_Walker' ) ) {
+						$defaults['walker'] = new Custom_Nav_Walker();
+					}
 					echo wp_nav_menu( $defaults ); 
 				?>
 			</nav>
@@ -297,8 +299,10 @@
 								'menu' => 'Main Menu', 
 								'container' => '', 
 								'items_wrap' => '<ul>%3$s</ul>',
-								'walker' => new Custom_Nav_Walker()
 							);
+							if ( class_exists( 'Custom_Nav_Walker' ) ) {
+								$defaults['walker'] = new Custom_Nav_Walker();
+							}
 							echo wp_nav_menu( $defaults ); 
 						?>
 						</nav>
