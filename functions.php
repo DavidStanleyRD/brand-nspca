@@ -244,9 +244,7 @@ add_filter( 'tiny_mce_before_init', 'my_theme_add_editor_fonts_to_tinymce' );
 /** Admin Styles **/
 
 function theme_admin_styles() {
-	$admin_css = get_theme_file_path( 'admin.css' );
-	$version   = file_exists( $admin_css ) ? (string) filemtime( $admin_css ) : null;
-	wp_enqueue_style( 'theme_main_admin_style', get_theme_file_uri( 'admin.css' ), array(), $version );
+	wp_enqueue_style( 'theme_main_admin_style', get_theme_file_uri( 'admin.css' ) );
 }
 add_action( 'admin_enqueue_scripts', 'theme_admin_styles' );
 
@@ -636,7 +634,7 @@ add_filter('login_redirect', 'redirect_after_login', 10, 3);
 
 function sdt_remove_ver_css_js( $src, $handle ) 
 {
-  $handles_with_version = [ 'style', 'theme_main_admin_style' ]; // <-- Adjust to your needs!
+  $handles_with_version = [ 'style' ]; // <-- Adjust to your needs!
   if ( strpos( $src, 'ver=' ) && ! in_array( $handle, $handles_with_version, true ) )
       $src = remove_query_arg( 'ver', $src );
   return $src;
@@ -1089,8 +1087,9 @@ class Custom_Nav_Walker extends Walker_Nav_Menu {
 add_action( 'after_setup_theme', function() {
 	add_theme_support( 'editor-styles' );
 	add_editor_style( 'assets/css/normalize.css' );
-	add_editor_style( 'dist/css/main.css' );
-	add_editor_style( 'custom-editor-style.css' );
+	// Avoid loading dist/css/main.css here: it contains a remote @import that can
+	// break block-editor style transforms (empty inserter / unrecognised blocks).
+	add_editor_style( 'editor-canvas.css' );
 } );
 
 
@@ -1118,7 +1117,10 @@ add_action( 'init', function() {
 		'photography-themes',
 	];
 	foreach ( $blocks as $block ) {
-		register_block_type( get_template_directory() . '/blocks/' . $block );
+		$path = get_template_directory() . '/blocks/' . $block;
+		if ( file_exists( $path . '/block.json' ) ) {
+			register_block_type( $path );
+		}
 	}
 } );
 
@@ -1129,10 +1131,10 @@ add_filter( 'acf/register_block_type_args', function( $args ) {
 
 
 // -------------------------------------------------------------------------
-// Restrict block inserter to theme blocks only
+// Restrict block inserter to theme blocks only (if they registered)
 // -------------------------------------------------------------------------
 add_filter( 'allowed_block_types_all', function( $allowed_blocks, $block_editor_context ) {
-	return [
+	$theme_blocks = [
 		'acf/one-column',
 		'acf/two-columns',
 		'acf/three-columns',
@@ -1142,5 +1144,13 @@ add_filter( 'allowed_block_types_all', function( $allowed_blocks, $block_editor_
 		'acf/downloads',
 		'acf/photography-themes',
 	];
+
+	$registry = WP_Block_Type_Registry::get_instance();
+	$registered = array_values( array_filter( $theme_blocks, function( $name ) use ( $registry ) {
+		return $registry->is_registered( $name );
+	} ) );
+
+	// Avoid emptying the inserter if registration failed for any reason.
+	return $registered ?: $allowed_blocks;
 }, 10, 2 );
 
