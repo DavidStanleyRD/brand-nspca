@@ -24,6 +24,7 @@
 	<link rel="shortcut icon" href="<?php echo $favicon['url'];?>">
 	<meta name="msapplication-TileColor" content="#ffffff">
 	<meta name="theme-color" content="#ffffff">
+	<link rel="stylesheet" href="https://use.typekit.net/zxv0ezo.css">
 	
 	<title>
 		<?php bloginfo('name'); // show the blog name, from settings ?> | 

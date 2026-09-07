@@ -2060,6 +2060,12 @@ h1, h2, h3, .accordion .accordion-toggle__inner .accordion-toggle__title, h4, h5
   margin-bottom: 0.5em;
 }
 
+.elizeth {
+  font-family: "elizeth", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
 .highlight {
   position: relative;
   display: inline-block;
