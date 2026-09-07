@@ -2066,6 +2066,12 @@ h1, h2, h3, .accordion .accordion-toggle__inner .accordion-toggle__title, h4, h5
   font-style: normal;
 }
 
+.garamond {
+  font-family: "garamond", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
 .highlight {
   position: relative;
   display: inline-block;
