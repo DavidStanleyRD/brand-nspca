@@ -10,25 +10,43 @@
 // -------------------------------------------------------------------------
 define('BRANDGUIDELINES_VERSION', 1.0);
 
-require_once get_template_directory() . '/inc/class-custom-nav-walker.php';
+// Load nav walker after WP core classes are available.
+add_action( 'after_setup_theme', function() {
+	$file = get_template_directory() . '/inc/class-custom-nav-walker.php';
+	if ( file_exists( $file ) ) {
+		require_once $file;
+	}
+}, 1 );
 
 
 // -------------------------------------------------------------------------
 // Enqueue styles and scripts (scripts placed in footer)
 // -------------------------------------------------------------------------
-function theme_enqueue_scripts_and_styles() {	
-	
-	// Stylesheets	
-	wp_enqueue_style( 'normalize-css', get_template_directory_uri() . '/assets/css/normalize.css' );
+function theme_enqueue_scripts_and_styles() {
+
+	$theme_uri  = get_template_directory_uri();
+	$theme_path = get_template_directory();
+
+	$normalize = $theme_path . '/assets/css/normalize.css';
+	if ( file_exists( $normalize ) ) {
+		wp_enqueue_style( 'normalize-css', $theme_uri . '/assets/css/normalize.css', array(), null );
+	}
+
 	wp_enqueue_style( 'dashicons' );
-	wp_enqueue_style( 'main-style', get_template_directory_uri() . '/dist/css/main.css', array(), null );
-	wp_enqueue_script( 'main', get_stylesheet_directory_uri() . '/dist/js/all.min.js', array(), '', true );
-	wp_localize_script( 'main', 'themeSearch', [
+
+	$main_css = $theme_path . '/dist/css/main.css';
+	$main_ver = file_exists( $main_css ) ? (string) filemtime( $main_css ) : null;
+	wp_enqueue_style( 'main-style', $theme_uri . '/dist/css/main.css', array(), $main_ver );
+
+	$main_js = $theme_path . '/dist/js/all.min.js';
+	$js_ver  = file_exists( $main_js ) ? (string) filemtime( $main_js ) : null;
+	wp_enqueue_script( 'main', $theme_uri . '/dist/js/all.min.js', array(), $js_ver, true );
+
+	wp_localize_script( 'main', 'themeSearch', array(
 		'ajaxUrl'     => admin_url( 'admin-ajax.php' ),
 		'nonce'       => wp_create_nonce( 'live_search_nonce' ),
 		'recommended' => theme_get_recommended_pages(),
-	] );
-
+	) );
 }
 
 // -------------------------------------------------------------------------
@@ -636,7 +654,7 @@ add_filter('login_redirect', 'redirect_after_login', 10, 3);
 
 function sdt_remove_ver_css_js( $src, $handle ) 
 {
-  $handles_with_version = [ 'style' ]; // <-- Adjust to your needs!
+  $handles_with_version = [ 'style', 'main-style', 'main' ]; // Keep cache-busting for theme assets
   if ( strpos( $src, 'ver=' ) && ! in_array( $handle, $handles_with_version, true ) )
       $src = remove_query_arg( 'ver', $src );
   return $src;
@@ -1000,8 +1018,11 @@ add_filter( 'the_password_form', 'custom_password_form', 10, 2 );
 // -------------------------------------------------------------------------
 add_action( 'after_setup_theme', function() {
 	add_theme_support( 'editor-styles' );
-	add_editor_style( 'assets/css/normalize.css' );
-	add_editor_style( 'dist/css/main.css' );
+	if ( file_exists( get_template_directory() . '/assets/css/normalize.css' ) ) {
+		add_editor_style( 'assets/css/normalize.css' );
+	}
+	// Do not load dist/css/main.css here — remote @import breaks the block editor.
+	add_editor_style( 'custom-editor-style.css' );
 } );
 
 
@@ -1020,7 +1041,7 @@ add_filter( 'acf/settings/load_json', function( $paths ) {
 // Register ACF Blocks
 // -------------------------------------------------------------------------
 add_action( 'init', function() {
-	$blocks = [
+	$blocks = array(
 		'one-column',
 		'two-columns',
 		'three-columns',
@@ -1029,11 +1050,14 @@ add_action( 'init', function() {
 		'colour-palette',
 		'downloads',
 		'photography-themes',
-	];
+	);
 	foreach ( $blocks as $block ) {
-		register_block_type( get_template_directory() . '/blocks/' . $block );
+		$path = get_template_directory() . '/blocks/' . $block;
+		if ( file_exists( $path . '/block.json' ) ) {
+			register_block_type( $path );
+		}
 	}
-} );
+}, 5 );
 
 add_filter( 'acf/register_block_type_args', function( $args ) {
 	$args['mode'] = 'auto';
@@ -1042,10 +1066,10 @@ add_filter( 'acf/register_block_type_args', function( $args ) {
 
 
 // -------------------------------------------------------------------------
-// Restrict block inserter to theme blocks only
+// Restrict block inserter to theme ACF blocks when they are registered
 // -------------------------------------------------------------------------
 add_filter( 'allowed_block_types_all', function( $allowed_blocks, $block_editor_context ) {
-	return [
+	$theme_blocks = array(
 		'acf/one-column',
 		'acf/two-columns',
 		'acf/three-columns',
@@ -1054,6 +1078,17 @@ add_filter( 'allowed_block_types_all', function( $allowed_blocks, $block_editor_
 		'acf/colour-palette',
 		'acf/downloads',
 		'acf/photography-themes',
-	];
+	);
+
+	$registry   = WP_Block_Type_Registry::get_instance();
+	$registered = array();
+	foreach ( $theme_blocks as $name ) {
+		if ( $registry->is_registered( $name ) ) {
+			$registered[] = $name;
+		}
+	}
+
+	// If nothing registered (e.g. ACF inactive), do not blank the editor.
+	return ! empty( $registered ) ? $registered : $allowed_blocks;
 }, 10, 2 );
 
