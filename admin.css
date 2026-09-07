@@ -29,6 +29,8 @@
 }
 html :where(.wp-block) {
     max-width: 1440px !important;
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
 }
 
 .dashboard-page {
