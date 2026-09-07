@@ -1090,7 +1090,7 @@ add_action( 'after_setup_theme', function() {
 	add_theme_support( 'editor-styles' );
 	add_editor_style( 'assets/css/normalize.css' );
 	add_editor_style( 'dist/css/main.css' );
-	add_editor_style( 'admin.css' );
+	add_editor_style( 'custom-editor-style.css' );
 } );
 
 

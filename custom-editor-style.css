@@ -43,6 +43,13 @@
 	text-align: justify;
 }
 
+/* Block editor canvas width */
+html :where(.wp-block) {
+	max-width: 1440px !important;
+	margin-top: 0 !important;
+	margin-bottom: 0 !important;
+}
+
 p {
   font-family: 'Plus Jakarta Sans', sans-serif;
 }
