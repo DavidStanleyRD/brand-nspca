@@ -1087,9 +1087,7 @@ class Custom_Nav_Walker extends Walker_Nav_Menu {
 add_action( 'after_setup_theme', function() {
 	add_theme_support( 'editor-styles' );
 	add_editor_style( 'assets/css/normalize.css' );
-	// Avoid loading dist/css/main.css here: it contains a remote @import that can
-	// break block-editor style transforms (empty inserter / unrecognised blocks).
-	add_editor_style( 'editor-canvas.css' );
+	add_editor_style( 'dist/css/main.css' );
 } );
 
 
@@ -1117,10 +1115,7 @@ add_action( 'init', function() {
 		'photography-themes',
 	];
 	foreach ( $blocks as $block ) {
-		$path = get_template_directory() . '/blocks/' . $block;
-		if ( file_exists( $path . '/block.json' ) ) {
-			register_block_type( $path );
-		}
+		register_block_type( get_template_directory() . '/blocks/' . $block );
 	}
 } );
 
@@ -1131,10 +1126,10 @@ add_filter( 'acf/register_block_type_args', function( $args ) {
 
 
 // -------------------------------------------------------------------------
-// Restrict block inserter to theme blocks only (if they registered)
+// Restrict block inserter to theme blocks only
 // -------------------------------------------------------------------------
 add_filter( 'allowed_block_types_all', function( $allowed_blocks, $block_editor_context ) {
-	$theme_blocks = [
+	return [
 		'acf/one-column',
 		'acf/two-columns',
 		'acf/three-columns',
@@ -1144,13 +1139,5 @@ add_filter( 'allowed_block_types_all', function( $allowed_blocks, $block_editor_
 		'acf/downloads',
 		'acf/photography-themes',
 	];
-
-	$registry = WP_Block_Type_Registry::get_instance();
-	$registered = array_values( array_filter( $theme_blocks, function( $name ) use ( $registry ) {
-		return $registry->is_registered( $name );
-	} ) );
-
-	// Avoid emptying the inserter if registration failed for any reason.
-	return $registered ?: $allowed_blocks;
 }, 10, 2 );
 
