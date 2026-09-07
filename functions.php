@@ -1021,8 +1021,34 @@ add_action( 'after_setup_theme', function() {
 	if ( file_exists( get_template_directory() . '/assets/css/normalize.css' ) ) {
 		add_editor_style( 'assets/css/normalize.css' );
 	}
-	// Do not load dist/css/main.css here — remote @import breaks the block editor.
+	// Load the remote font as its own stylesheet — WP fetches and inlines it correctly.
+	add_editor_style( 'https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap' );
 	add_editor_style( 'custom-editor-style.css' );
+} );
+
+// -------------------------------------------------------------------------
+// Load dist/css/main.css into the editor iframe with its leading
+// @charset/@import stripped — those break when inlined into a <style> tag,
+// which is why main.css was previously left out of the block editor.
+// -------------------------------------------------------------------------
+add_filter( 'block_editor_settings_all', function( $settings ) {
+	$main_css = get_template_directory() . '/dist/css/main.css';
+	if ( ! file_exists( $main_css ) ) {
+		return $settings;
+	}
+
+	$css = file_get_contents( $main_css );
+	$css = preg_replace( '/^\s*@charset\s+[^;]+;\s*/i', '', $css, 1 );
+	$css = preg_replace( '/^\s*@import\s+url\([^)]+\)\s*;\s*/i', '', $css, 1 );
+
+	$settings['styles'][] = array(
+		'css'            => $css,
+		'baseURL'        => get_template_directory_uri() . '/dist/css/main.css',
+		'__unstableType' => 'theme',
+		'isGlobalStyles' => false,
+	);
+
+	return $settings;
 } );
 
 
